@@ -18,22 +18,24 @@ import { db } from "../firebase";
 import QRCode from "react-qr-code";
 
 export default function AddNewItem() {
-    const date = new Date(Date.now()).toUTCString();
-
     const [showFormDialog, setShowFormDialog] = React.useState(false);
     const [showQRDialog, setShowQRDialog] = React.useState(false);
 
-    const [data, setData] = React.useState({
-        uniqueID: Math.floor(Math.random() * 10000000000),
-        name: "",
-        price: "",
-        category: "",
-        location: "",
-        date: date,
-        sold: false,
-    });
+    const [data, setData] = React.useState({});
 
-    const dialogFormOpen = () => setShowFormDialog(true);
+    const dialogFormOpen = () => {
+        const date = new Date(Date.now()).toUTCString();
+        setData({
+            uniqueID: Math.floor(Math.random() * 10000000000),
+            name: "",
+            price: "",
+            category: "",
+            location: "",
+            date: date,
+            sold: false,
+        });
+        setShowFormDialog(true);
+    };
     const dialogFormClose = () => setShowFormDialog(false);
     const dialogQROpen = () => setShowQRDialog(true);
     const dialogQRClose = () => setShowQRDialog(false);

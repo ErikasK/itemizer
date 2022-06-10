@@ -46,11 +46,11 @@ export default function ViewAllItems() {
             <Button variant="outlined" onClick={dialogOpen}>
                 View Items
             </Button>
-            <Dialog open={showDialog}>
+            <Dialog open={showDialog} maxWidth="false">
                 <DialogTitle sx={{ alignSelf: "center" }}>
                     All items
                 </DialogTitle>
-                <DialogContent>
+                <DialogContent sx={{ maxWidth: "1000px" }}>
                     {itemKeys.length > 0 ? (
                         <TableContainer
                             component={Paper}
